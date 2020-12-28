@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        //tags = {"~@notImplemented"},
+        tags = {"~@notImplemented"},
         features = {"src/test/resources"},
         plugin = {"html:target/cucumber-reports"},
         glue = { "webSite.steps"},

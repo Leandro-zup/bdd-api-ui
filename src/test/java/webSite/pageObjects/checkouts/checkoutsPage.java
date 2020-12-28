@@ -2,23 +2,37 @@ package webSite.pageObjects.checkouts;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
+import webSite.base.util;
 
 public class checkoutsPage extends checkoutsMap {
 
-    //String geraNome = gerarNome();
+    util _util = new util();
 
-    public void preencherCamposCad() {
-        //driver.findElement(USUARIO).sendKeys("LeandroLima"+geraNome);
-        driver.findElement(SENHA).sendKeys("123456");
-        driver.findElement(CONFIRMA_SENHA).sendKeys("123456");
+    public void preencherInformacoes(String nome,String ultimoNome ,String cep ) {
+        driver.findElement(TEXT_NOME).sendKeys(nome);
+        driver.findElement(TEXT_ULTIMO_NOME).sendKeys(ultimoNome);
+        driver.findElement(TEXT_CEP).sendKeys(cep);
+        clicarCadastrar();
     }
 
     public void clicarCadastrar() {
-        driver.findElement(BOTAO_CADASTRAR).click();
+        driver.findElement(BUTTON_CONTINUAR).click();
     }
 
-    public void validarCadastro(){
-        String textoElement = driver.findElement(VALIDA).getText();
-        Assert.assertThat(textoElement, CoreMatchers.containsString("Login"));
+    public void validarOverviewCompra(String nome, String preco){
+        _util.waitElement(NOME_PRODUTO);
+
+        String textoElement1 = driver.findElement(NOME_PRODUTO).getText();
+        Assert.assertThat(textoElement1, CoreMatchers.containsString(nome));
+
+        String textoElement2 = driver.findElement(PRECO_PRODUTO).getText();
+        Assert.assertThat(textoElement2, CoreMatchers.containsString(preco));
+
+        driver.findElement(BUTTON_FINALIZAR).click();
+    }
+
+    public void validarParabens(){
+        String textoElement1 = driver.findElement(MESSAGE_PARABENS).getText();
+        Assert.assertThat(textoElement1, CoreMatchers.containsString("THANK YOU FOR YOUR ORDER"));
     }
 }

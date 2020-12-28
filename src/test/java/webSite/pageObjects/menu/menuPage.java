@@ -1,7 +1,5 @@
 package webSite.pageObjects.menu;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import webSite.base.basePage;
 
 public class menuPage extends menuMap {

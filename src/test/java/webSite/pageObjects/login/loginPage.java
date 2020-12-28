@@ -2,6 +2,7 @@ package webSite.pageObjects.login;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 import static org.junit.Assert.assertEquals;
 

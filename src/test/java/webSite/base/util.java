@@ -29,7 +29,7 @@ public class util extends hooks {
         }
     }
 
-    protected WebElement waitElement(By locator) {
+    public WebElement waitElement(By locator) {
         return new WebDriverWait(getDriver(), DEFAULT_TIME_WAIT)
                 .until(ExpectedConditions.presenceOfElementLocated(locator));
     }

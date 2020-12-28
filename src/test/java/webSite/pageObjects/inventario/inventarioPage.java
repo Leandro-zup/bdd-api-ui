@@ -20,4 +20,8 @@ public class inventarioPage extends inventarioMap {
         String textoElement2 = driver.findElement(PRECO_PRODUTOS(posicao)).getText();
         Assert.assertThat(textoElement2, CoreMatchers.containsString(preco));
     }
+
+    public void clicarProdutoCarrinho(String posicao) {
+        driver.findElement(BUTTON_ADD_CART(posicao)).click();
+    }
 }

@@ -4,10 +4,13 @@
 
 @login
 Funcionalidade: Login
-  A funcionalidade Login permite acesso ao Swaglabs
+   A funcionalidade Login permite acesso ao Swaglabs
+
+  Contexto:
+    Dado o usuário não autenticado acessa a tela de Login
+
 
   Esquema do Cenário: CT01 - Logar no sistema Swaglabs com sucesso
-    Dado o usuário não autenticado acessa a tela de Login
     Quando preenche "<username>" e "<password>" e clica em Login
     Então o usuário é autenticado no sistema com sucesso
     Exemplos:
@@ -15,7 +18,6 @@ Funcionalidade: Login
       |standard_user  |secret_sauce  |
 
   Esquema do Cenário: CT02 - Validar login de usuário bloqueado
-    Dado o usuário não autenticado acessa a tela de Login
     Quando preenche "<username>" e "<password>" e clica em Login
     Então o usuário não é autenticado no sistema
     Exemplos:
@@ -26,3 +28,4 @@ Funcionalidade: Login
     Dado o usuário autenticado no sistema
     E clica em Menu >> Logout
     Então o usuário é deslogado do sistema
+

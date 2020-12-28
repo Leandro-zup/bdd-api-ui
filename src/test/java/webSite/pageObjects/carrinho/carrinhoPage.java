@@ -2,35 +2,27 @@ package webSite.pageObjects.carrinho;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
-import org.openqa.selenium.support.ui.Select;
+import webSite.base.util;
 
 public class carrinhoPage extends carrinhoMap {
 
-    public void preencherCamposCadFuncionario() {
-        driver.findElement(NOME).sendKeys("Leandro Lima");
-        driver.findElement(CARGO).sendKeys("Analista QA");
-        driver.findElement(CPF).sendKeys("607.433.160-02");
-        driver.findElement(SALARIO).sendKeys("100000");
-        Select drp = new Select(driver.findElement(SEXO));
-        drp.selectByVisibleText("Masculino");
-        driver.findElement(CLT).click();
-        driver.findElement(ADMISSAO).sendKeys("10102019");
+    util _util = new util();
+
+    public void clicarCarrinho(){
+        driver.findElement(BUTTON_CARRINHO).click();
     }
 
-    public void clicarNovoFuncionario() {
-        driver.findElement(NOVO_FUNCIONARIO).click();
+    public void validarProdutoCarrinho(String nome, String preco){
+        _util.waitElement(NOME_PRODUTO_1);
+
+        String textoElement1 = driver.findElement(NOME_PRODUTO_1).getText();
+        Assert.assertThat(textoElement1, CoreMatchers.containsString(nome));
+
+        String textoElement2 = driver.findElement(PRECO_PRODUTO_1).getText();
+        Assert.assertThat(textoElement2, CoreMatchers.containsString(preco));
     }
 
-    public void clicarFuncionario() {
-        driver.findElement(FUNCIONARIO).click();
-    }
-
-    public void clicarSubmit() {
-        driver.findElement(CADASTRAR).click();
-    }
-
-    public void validarCadastro(){
-        String textoElement = driver.findElement(SUCESSO).getText();
-        Assert.assertThat(textoElement, CoreMatchers.containsString("SUCESSO"));
+    public void clicarCheckout(){
+        driver.findElement(BUTTON_CHECKOUT).click();
     }
 }

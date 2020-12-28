@@ -15,4 +15,8 @@ public class inventarioMap extends hooks {
 
     public static final By MESSSAGE_PRODUTOS = By.cssSelector("[class=product_label]");
 
+    public static By BUTTON_ADD_CART(String data) {
+        return By.xpath("/html/body/div/div[2]/div[2]/div/div[2]/div/div[" +data+ "]/div[3]/button");
+    }
+
 }
